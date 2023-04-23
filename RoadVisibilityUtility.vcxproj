@@ -131,6 +131,29 @@
     <None Include="data\TIN Model Road Surface.csv" />
     <None Include="data\welbedacht_Plan1.dxf" />
     <None Include="docs\How far can you see along a road.pdf" />
+    <None Include="docs\notes.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CsvRoadSurfaceReader.h" />
+    <ClInclude Include="src\CsvPolylineReader.h" />
+    <ClInclude Include="src\RoadSurfaceReader.h" />
+    <ClInclude Include="src\PolylineReader.h" />
+    <ClInclude Include="src\IntersectionCalculator.h" />
+    <ClInclude Include="src\Line.h" />
+    <ClInclude Include="src\Polyline.h" />
+    <ClInclude Include="src\Triangle.h" />
+    <ClInclude Include="src\Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\CsvRoadSurfaceReader.cpp" />
+    <ClCompile Include="src\CsvPolylineReader.cpp" />
+    <ClCompile Include="src\RoadSurfaceReader.cpp" />
+    <ClCompile Include="src\PolylineReader.cpp" />
+    <ClCompile Include="src\IntersectionCalculator.cpp" />
+    <ClCompile Include="src\Line.cpp" />
+    <ClCompile Include="src\Polyline.cpp" />
+    <ClCompile Include="src\Triangle.cpp" />
+    <ClCompile Include="src\Vertex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
