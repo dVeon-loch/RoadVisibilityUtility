@@ -4,7 +4,7 @@
 #include<iostream>
 #include <fstream>
 
-#include "Vertex.h"
+#include "Triangle.h"
 
 class cRoadSurfaceReader
 {
@@ -15,7 +15,7 @@ public:
 	{
 	}
 
-	virtual const std::vector<Vertex>& ReadRoadSurface();
+	virtual const std::vector<Triangle> ReadRoadSurface();
 
 	virtual void PrintFile()
 	{

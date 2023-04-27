@@ -14,7 +14,7 @@ public:
 	{
 	}
 
-	virtual std::vector<Vertex>& ReadPolyline();
+	virtual std::vector<Vertex> ReadPolyline();
 
 	virtual void PrintFile()
 	{

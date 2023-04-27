@@ -5,78 +5,96 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Abstract Classes">
+      <UniqueIdentifier>{989b4784-b421-4d88-aaf6-241951d436da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{bbe3d9e9-4bb9-4063-a4b3-e61b82acda4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{7943b522-86f9-473d-bc25-b9a5a661dda3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\polyline.csv" />
-    <None Include="data\TIN Model Road Surface.csv" />
     <None Include="data\welbedacht_Plan1.dxf" />
     <None Include="docs\How far can you see along a road.pdf" />
     <None Include="docs\notes.md" />
+    <None Include="data\polyline.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\TIN Model Road Surface.csv">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Triangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Vertex.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Line.h">
+      <Filter>Source Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Polyline.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Line.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Triangle.h">
+      <Filter>Source Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\IntersectionCalculator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PolylineReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RoadSurfaceReader.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Vertex.h">
+      <Filter>Source Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\CsvPolylineReader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="src\CsvRoadSurfaceReader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IntersectionCalculator.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PolylineReader.h">
+      <Filter>Abstract Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RoadSurfaceReader.h">
+      <Filter>Abstract Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Util.h">
+      <Filter>Source Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Triangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Vertex.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Polyline.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Line.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\IntersectionCalculator.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\RoadSurfaceReader.cpp">
+      <Filter>Abstract Classes</Filter>
     </ClCompile>
     <ClCompile Include="src\PolylineReader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Abstract Classes</Filter>
     </ClCompile>
-    <ClCompile Include="src\RoadSurfaceReader.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Line.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Polyline.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triangle.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vertex.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="src\CsvPolylineReader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="src\CsvRoadSurfaceReader.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IntersectionCalculator.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Util.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

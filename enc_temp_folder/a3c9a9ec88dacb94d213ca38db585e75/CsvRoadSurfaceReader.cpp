@@ -44,6 +44,7 @@ const std::vector<Triangle> cRoadSurfaceReader::ReadRoadSurface()
 		}
 		if(!invalidTriangle){
 			roadSurfaceTriangles.emplace_back(Triangle{ triangleVertices[0], triangleVertices[1], triangleVertices[2] });
+			//test.push_back(69);
 		}
 	}
 	return roadSurfaceTriangles;

@@ -1,5 +1,6 @@
 #pragma once
 #include "RoadSurfaceReader.h"
+#include <sstream>
 class cCsvRoadSurfaceReader :
     public cRoadSurfaceReader
 {

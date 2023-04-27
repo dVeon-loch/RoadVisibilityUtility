@@ -1,23 +1,39 @@
 #pragma once
 
 #include <array>
+#include <iostream>
 class Vertex
 {
 private:
-	float m_x;
-	float m_y;
-	float m_z;
+	double m_x;
+	double m_y;
+	double m_z;
 public:
 	Vertex(float x, float y, float z);
 
-	float x();
+	Vertex(double x, double y, double z);
 
-	float y();
+	Vertex(std::array<float, 3> vertices);
 
-	float z();
+	Vertex(std::array<double, 3> vertices);
+
+	Vertex() :m_x(0), m_y(0), m_z(0)
+	{
+	}
+
+	~Vertex() 
+	{
+		std::cout << "Destructor called!" << std::endl;
+	}
+
+	double x();
+
+	double y();
+
+	double z();
 
 	// std::array returns whole array so this does not get destroyed when scope ends.
-	const std::array<float, 3> GetArray()
-}
+	const std::array<double, 3> GetArray();
+
 };
 
