@@ -4,7 +4,7 @@ cCsvPolylineReader::cCsvPolylineReader(const char* filePath) : cPolylineReader(f
 {
 }
 
-std::vector<Vertex> cPolylineReader::ReadPolyline()
+Polyline cPolylineReader::ReadPolyline()
 {
 	std::ifstream inputFile;
 	inputFile.open(m_filePath);
@@ -28,5 +28,5 @@ std::vector<Vertex> cPolylineReader::ReadPolyline()
 			}
 			polyline.emplace_back(Vertex {vertexComponents});
 	}
-	return polyline;
+	return Polyline{ polyline };
 }

@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include "Vertex.h"
+#include "Polyline.h"
 
 class cPolylineReader
 {
@@ -14,7 +15,7 @@ public:
 	{
 	}
 
-	virtual std::vector<Vertex> ReadPolyline();
+	virtual Polyline ReadPolyline();
 
 	virtual void PrintFile()
 	{
