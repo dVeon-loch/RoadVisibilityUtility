@@ -3,6 +3,7 @@
 #include <vector>
 #include<iostream>
 #include <fstream>
+#include <memory>
 
 #include "Triangle.h"
 
@@ -15,7 +16,7 @@ public:
 	{
 	}
 
-	virtual const std::vector<Triangle> ReadRoadSurface();
+	virtual const std::shared_ptr<std::vector<Triangle>> ReadRoadSurface();
 
 	virtual void PrintFile()
 	{

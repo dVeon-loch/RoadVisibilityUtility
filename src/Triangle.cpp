@@ -2,26 +2,25 @@
 
 #include <iostream>
 
-Triangle::Triangle(Vertex A, Vertex B, Vertex C) : m_A(A), m_B(B), m_C(C)
+Triangle::Triangle(Vector3 A, Vector3 B, Vector3 C) : m_A(A), m_B(B), m_C(C)
 {
 }
 
 Triangle::Triangle(const Triangle& other) : m_A(other.m_A), m_B(other.m_B), m_C(other.m_C)
 {
-	std::cout << "Copy constructor called!" << std::endl;
 }
 
-const Vertex Triangle::GetA()
+const Vector3& Triangle::GetA() const
 {
 	return m_A;
 }
 
-const Vertex Triangle::GetB()
+const Vector3& Triangle::GetB() const
 {
 	return m_B;
 }
 
-const Vertex Triangle::GetC()
+const Vector3& Triangle::GetC() const
 {
 	return m_C;
 }

@@ -6,20 +6,21 @@ cCsvRoadSurfaceReader::cCsvRoadSurfaceReader(const char* filePath) : cRoadSurfac
 {
 }
 
-const std::vector<Triangle> cRoadSurfaceReader::ReadRoadSurface()
+const std::shared_ptr<std::vector<Triangle>> cRoadSurfaceReader::ReadRoadSurface()
 {
 	std::ifstream inputFile;
 	inputFile.open(m_filePath);
 
 	std::vector<Triangle> roadSurfaceTriangles;
 	std::vector<int> test;
+	//TODO make function in utility namespace to get lines of a file
 	roadSurfaceTriangles.reserve(3144);
 	std::string line;
 
 	while (std::getline(inputFile, line))
 	{
 		std::stringstream str(line);
-		std::vector<Vertex> triangleVertices;
+		std::vector<Vector3> triangleVertices;
 		triangleVertices.reserve(3);
 		bool invalidTriangle{ false };
 		for (auto i{ 0 }; i < 3; i ++)
@@ -40,11 +41,11 @@ const std::vector<Triangle> cRoadSurfaceReader::ReadRoadSurface()
 				break;
 			}
 				// Avoid unnecessary copies
-				triangleVertices.emplace_back(Vertex{ vertex });
+				triangleVertices.emplace_back(Vector3{ vertex });
 		}
 		if(!invalidTriangle){
 			roadSurfaceTriangles.emplace_back(Triangle{ triangleVertices[0], triangleVertices[1], triangleVertices[2] });
 		}
 	}
-	return roadSurfaceTriangles;
+	return std::make_shared<std::vector<Triangle>>(roadSurfaceTriangles);
 }

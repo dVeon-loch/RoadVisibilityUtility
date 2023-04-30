@@ -3,7 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "Vertex.h"
+#include <memory>
+
+#include "Vector3.h"
 #include "Polyline.h"
 
 class cPolylineReader
@@ -15,7 +17,7 @@ public:
 	{
 	}
 
-	virtual Polyline ReadPolyline();
+	virtual std::shared_ptr<Polyline> ReadPolyline();
 
 	virtual void PrintFile()
 	{

@@ -1,23 +1,23 @@
 #pragma once
 
-#include "Vertex.h"
+#include "Vector3.h"
 
 class Triangle
 {
 private:
-	Vertex m_A, m_B, m_C;
+	Vector3 m_A, m_B, m_C;
 public:
-	Triangle(Vertex A, Vertex B, Vertex C);
+	Triangle(Vector3 A, Vector3 B, Vector3 C);
 
 	Triangle(const Triangle& other);
 
 	~Triangle(){}
 
-	const Vertex GetA();
+	const Vector3& GetA() const;
 
-	const Vertex GetB();
+	const Vector3& GetB() const;
 
-	const Vertex GetC();
+	const Vector3& GetC() const;
 
 	Triangle& operator=(const Triangle& other);
 };

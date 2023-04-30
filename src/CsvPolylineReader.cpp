@@ -4,12 +4,12 @@ cCsvPolylineReader::cCsvPolylineReader(const char* filePath) : cPolylineReader(f
 {
 }
 
-Polyline cPolylineReader::ReadPolyline()
+std::shared_ptr<Polyline> cPolylineReader::ReadPolyline()
 {
 	std::ifstream inputFile;
 	inputFile.open(m_filePath);
 
-	std::vector<Vertex> polyline;
+	std::vector<Vector3> polyline;
 	polyline.reserve(114);
 	std::string line;
 
@@ -26,7 +26,7 @@ Polyline cPolylineReader::ReadPolyline()
 				std::getline(str, vertexComponent, ',');
 				vertexComponents[i] = std::stod(vertexComponent);
 			}
-			polyline.emplace_back(Vertex {vertexComponents});
+			polyline.emplace_back(Vector3 {vertexComponents});
 	}
-	return Polyline{ polyline };
+	return std::make_shared<Polyline>(polyline);
 }
