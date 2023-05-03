@@ -9,14 +9,15 @@ struct Plane
 	Vector3 normal;
 };
 
-const float cIntersectionCalculator::EPSILON{ 0.001f };
+const float cIntersectionCalculator::EPSILON{ 0.0001f };
 
 cIntersectionCalculator::cIntersectionCalculator(std::shared_ptr<std::vector<Triangle>> pRoadSurfaceTriangles) : m_pRoadSurfaceTriangles(pRoadSurfaceTriangles)
 {
 }
 
-bool cIntersectionCalculator::GetIntersectsWithRoad(const Vector3& rayStartVector, const Vector3& targetVector) const
+Intersection cIntersectionCalculator::GetIntersectsWithRoad(const Vector3& rayStartVector, const Vector3& targetVector) const
 {
+	Intersection defaultIntersection;
 	for (const auto& triangle : *m_pRoadSurfaceTriangles)
 	{
 		Vector3 tri_A = triangle.GetA();
@@ -39,13 +40,19 @@ bool cIntersectionCalculator::GetIntersectsWithRoad(const Vector3& rayStartVecto
 		double normalDotRayDirection = Util::dot(viewRayDirection, trianglePlaneNormal);
 		if (std::abs(normalDotRayDirection) < EPSILON)
 		{
-			return false;
+			return defaultIntersection;
 		}
 
 		Vector3 numeratorBracket = trianglePlane.planePoint - rayStartVector;
 		double numerator = Util::dot(trianglePlaneNormal, numeratorBracket);
 
 		double t = numerator / normalDotRayDirection;
+
+		// Check if intersection is behind 'viewing ray'
+		if (t < 0) 
+		{
+			return defaultIntersection;
+		}
 
 		Vector3 planeIntersectionPoint = rayStartVector + viewRayDirection * t;
 
@@ -65,10 +72,9 @@ bool cIntersectionCalculator::GetIntersectsWithRoad(const Vector3& rayStartVecto
 		bool A_Test_Matches_Normal = Util::dot(A_test_Vec, trianglePlaneNormal);
 		bool B_Test_Matches_Normal = Util::dot(B_Test_Vec, trianglePlaneNormal);
 		bool C_Test_Matches_Normal = Util::dot(C_Test_Vec, trianglePlaneNormal);
-		
-		return A_Test_Matches_Normal && B_Test_Matches_Normal && C_Test_Matches_Normal;
 
+		return { A_Test_Matches_Normal && B_Test_Matches_Normal && C_Test_Matches_Normal, planeIntersectionPoint };
 	}
 	// Didn't intersect with any triangles
-	return false;
+	return defaultIntersection;
 }

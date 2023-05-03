@@ -5,27 +5,34 @@
 
 int main()
 {
-	cCsvPolylineReader polylineReader{ "C:\\personaldev\\CivilDesigner\\ProgrammingTask\\RoadVisibilityUtility\\data\\polyline.csv" };
+	CsvPolylineReader polylineReader{ "C:\\personaldev\\CivilDesigner\\ProgrammingTask\\RoadVisibilityUtility\\data\\polyline.csv" };
 	std::shared_ptr<Polyline> polyline = polylineReader.ReadPolyline();
 	
 
-	cCsvRoadSurfaceReader roadSurfaceReader{"C:\\personaldev\\CivilDesigner\\ProgrammingTask\\RoadVisibilityUtility\\data\\TIN Model Road Surface.csv"};
+	CsvRoadSurfaceReader roadSurfaceReader{"C:\\personaldev\\CivilDesigner\\ProgrammingTask\\RoadVisibilityUtility\\data\\TIN Model Road Surface.csv"};
 	auto roadSurfaceTriangles = roadSurfaceReader.ReadRoadSurface();
 
 	cSightDistanceCalculator sightDistanceCalculator(polyline, roadSurfaceTriangles);
 
 	auto sightDistanceFailures = sightDistanceCalculator.GetSightDistanceFailures();
 
-	for (const auto& failure : *sightDistanceFailures)
+	std::ofstream file("VisibilityRanges.txt");
+	file << std::fixed;
+	file.clear();
+	if (file.is_open())
 	{
-		Vector3 failureVertex = failure.GetVertex();
-		int failureDistanceMetres = failure.GetDistanceMetres();
-		std::cout << "At Vertex with co-ordinates: {" << failureVertex.x() << ", " << failureVertex.y() << ", " << failureVertex.z() << "}" << std::endl;
-		std::cout << "Target Distance Failed: " << failureDistanceMetres << "m" << std::endl;
+
+		for (const auto& failure : *sightDistanceFailures)
+		{
+			Vector3 failureVertex = failure.GetVertex();
+			file << "At Vertex " << failure.GetDistanceFromStartMetres() << " metres from the start, visibility is impaired in the following distance ranges: " << std::endl;
+			for (const auto& range : failure.GetImpairedVisibilityRanges())
+			{
+				file << range.first << "m to " << range.second << "m" << std::endl;
+			}
+		}
 	}
-
-
-
-	std::cin.get();
+	file.flush();
+	file.close();
 	return 0;
 }

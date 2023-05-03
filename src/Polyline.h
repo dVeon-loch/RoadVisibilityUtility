@@ -7,8 +7,7 @@ class Polyline
 private:
 	std::vector<Vector3> m_vertices;
 	unsigned int m_currentIndex{ 0 };
-
-	float GetDistanceBetweenVerticesMetres();
+	std::vector<float> m_distancesForIndices;
 
 public:
 	Polyline(std::vector<Vector3> verticies);
@@ -17,11 +16,15 @@ public:
 
 	Vector3 operator[](unsigned int index);
 
+	Vector3 at(unsigned int index);
+
 	unsigned int size();
 
-	Vector3 GetVertexAtDistanceMetres(float distanceMetres);
+	void IncrementCurrentVertex();
 
-	Vector3 GetAndIncrement();
+	Vector3 GetCurrentVertex() const;
+
+	float GetDistanceAtIndex(unsigned int index) const;
 
 };
 

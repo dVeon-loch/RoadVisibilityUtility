@@ -2,10 +2,10 @@
 #include "PolylineReader.h"
 #include <sstream>
 
-class cCsvPolylineReader :
+class CsvPolylineReader :
     public cPolylineReader
 {
 public:
-    cCsvPolylineReader(const char* filePath);
+    CsvPolylineReader(const char* filePath);
 };
 

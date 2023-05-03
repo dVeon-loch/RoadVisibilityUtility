@@ -1,10 +1,10 @@
 #pragma once
 #include "RoadSurfaceReader.h"
 #include <sstream>
-class cCsvRoadSurfaceReader :
+class CsvRoadSurfaceReader :
     public cRoadSurfaceReader
 {
 public:
-    cCsvRoadSurfaceReader(const char* filePath);
+    CsvRoadSurfaceReader(const char* filePath);
 };
 

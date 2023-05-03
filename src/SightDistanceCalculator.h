@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <utility>
 
 #include "Polyline.h"
 #include "Triangle.h"
@@ -11,22 +12,32 @@ class cSightDistanceFailure
 {
 private:
 	Vector3 m_polylineViewVertex;
-	int m_polylineTargetDistanceMetres;
-
+	float m_distanceFromStartMetres;
+	std::vector<std::pair<float, float>> m_impairedVisibilityRanges;
 public:
 	//Want to add intersected triangle here for rendering purposes
-	cSightDistanceFailure(Vector3 polylineViewVertex, int targetDistanceMetres) : m_polylineViewVertex(polylineViewVertex), m_polylineTargetDistanceMetres(targetDistanceMetres)
+	cSightDistanceFailure(Vector3 polylineViewVertex, float distanceFromStartMetres) : m_polylineViewVertex(polylineViewVertex), m_distanceFromStartMetres(distanceFromStartMetres)
 	{
 	}
 
-	const Vector3 GetVertex() const
+	void AddImpairedVisibilityRange(std::pair<float, float> impairedVisibilityRange)
+	{
+		m_impairedVisibilityRanges.push_back(impairedVisibilityRange);
+	}
+
+	const Vector3& GetVertex() const
 	{
 		return m_polylineViewVertex;
 	}
 
-	const int GetDistanceMetres() const
+	const std::vector<std::pair<float,float>>& GetImpairedVisibilityRanges() const
 	{
-		return m_polylineTargetDistanceMetres;
+		return m_impairedVisibilityRanges;
+	}
+
+	float GetDistanceFromStartMetres() const
+	{
+		return m_distanceFromStartMetres;
 	}
 };
 

@@ -46,5 +46,7 @@ public:
 	Vector3 operator *(double multiplicand) const;
 	
 	Vector3 operator /(double denominator) const;
+
+	friend std::ostream& operator<<(std::ostream& Str, const Vector3& v);
 };
 

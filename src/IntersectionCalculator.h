@@ -6,7 +6,11 @@
 #include "Triangle.h"
 #include "Vector3.h"
 
-
+struct Intersection
+{
+	bool intersected{ false };
+	Vector3 intersectionCoord;
+};
 
 class cIntersectionCalculator
 {
@@ -18,6 +22,6 @@ private:
 public:
 	cIntersectionCalculator(std::shared_ptr<std::vector<Triangle>> pRoadSurfaceTriangles);
 
-	bool GetIntersectsWithRoad(const Vector3& startingVertex, const Vector3& targetVertex) const;
+	Intersection GetIntersectsWithRoad(const Vector3& startingVertex, const Vector3& targetVertex) const;
 };
 

@@ -71,5 +71,7 @@ Vector3 Vector3::operator*(double multiplicand) const
 	return Vector3{ this->m_x * multiplicand, this->m_y * multiplicand, this->m_z * multiplicand };
 }
 
-
-
+std::ostream& operator<<(std::ostream& Str, const Vector3& v)
+{
+	return Str << "x: " << v.m_x << ", y: " << v.m_y << ", z:" << v.m_z;
+}
