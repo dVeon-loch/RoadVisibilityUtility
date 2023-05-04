@@ -5,6 +5,6 @@ class CsvRoadSurfaceReader :
     public cRoadSurfaceReader
 {
 public:
-    CsvRoadSurfaceReader(const char* filePath);
+    CsvRoadSurfaceReader(const std::string& filePath);
 };
 

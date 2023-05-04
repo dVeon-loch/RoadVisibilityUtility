@@ -2,7 +2,7 @@
 #include "Util.h"
 
 
-CsvRoadSurfaceReader::CsvRoadSurfaceReader(const char* filePath) : cRoadSurfaceReader(filePath)
+CsvRoadSurfaceReader::CsvRoadSurfaceReader(const std::string& filePath) : cRoadSurfaceReader(filePath)
 {
 }
 

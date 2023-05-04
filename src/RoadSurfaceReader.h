@@ -10,9 +10,9 @@
 class cRoadSurfaceReader
 {
 private:
-	const char* m_filePath;
+	const std::string m_filePath;
 public:
-	cRoadSurfaceReader(const char* filePath) : m_filePath(filePath)
+	cRoadSurfaceReader(const std::string& filePath) : m_filePath(filePath)
 	{
 	}
 

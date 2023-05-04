@@ -12,7 +12,7 @@ struct Intersection
 	Vector3 intersectionCoord;
 };
 
-class cIntersectionCalculator
+class IntersectionCalculator
 {
 private:
 	std::shared_ptr<std::vector<Triangle>> m_pRoadSurfaceTriangles;
@@ -20,7 +20,7 @@ private:
 	static const float EPSILON;
 
 public:
-	cIntersectionCalculator(std::shared_ptr<std::vector<Triangle>> pRoadSurfaceTriangles);
+	IntersectionCalculator(std::shared_ptr<std::vector<Triangle>> pRoadSurfaceTriangles);
 
 	Intersection GetIntersectsWithRoad(const Vector3& startingVertex, const Vector3& targetVertex) const;
 };

@@ -11,9 +11,9 @@
 class cPolylineReader
 {
 private:
-	const char* m_filePath;
+	const std::string m_filePath;
 public:
-	cPolylineReader(const char* filePath) : m_filePath(filePath)
+	cPolylineReader(const std::string& filePath) : m_filePath(filePath)
 	{
 	}
 

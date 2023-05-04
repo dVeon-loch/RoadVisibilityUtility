@@ -9,13 +9,13 @@ struct Plane
 	Vector3 normal;
 };
 
-const float cIntersectionCalculator::EPSILON{ 0.0001f };
+const float IntersectionCalculator::EPSILON{ 0.0001f };
 
-cIntersectionCalculator::cIntersectionCalculator(std::shared_ptr<std::vector<Triangle>> pRoadSurfaceTriangles) : m_pRoadSurfaceTriangles(pRoadSurfaceTriangles)
+IntersectionCalculator::IntersectionCalculator(std::shared_ptr<std::vector<Triangle>> pRoadSurfaceTriangles) : m_pRoadSurfaceTriangles(pRoadSurfaceTriangles)
 {
 }
 
-Intersection cIntersectionCalculator::GetIntersectsWithRoad(const Vector3& rayStartVector, const Vector3& targetVector) const
+Intersection IntersectionCalculator::GetIntersectsWithRoad(const Vector3& rayStartVector, const Vector3& targetVector) const
 {
 	Intersection defaultIntersection;
 	for (const auto& triangle : *m_pRoadSurfaceTriangles)

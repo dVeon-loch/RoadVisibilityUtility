@@ -8,16 +8,26 @@
 #include "IntersectionCalculator.h"
 
 
-class cSightDistanceFailure
+class SightDistanceFailure
 {
 private:
 	Vector3 m_polylineViewVertex;
 	float m_distanceFromStartMetres;
+	std::vector<std::pair<Vector3, float>> m_intersectionsAndDistances;
 	std::vector<std::pair<float, float>> m_impairedVisibilityRanges;
 public:
-	//Want to add intersected triangle here for rendering purposes
-	cSightDistanceFailure(Vector3 polylineViewVertex, float distanceFromStartMetres) : m_polylineViewVertex(polylineViewVertex), m_distanceFromStartMetres(distanceFromStartMetres)
+	SightDistanceFailure(Vector3 polylineViewVertex, float distanceFromStartMetres) : m_polylineViewVertex(polylineViewVertex), m_distanceFromStartMetres(distanceFromStartMetres)
 	{
+	}
+
+	void AddIntersectionAndDistance(std::pair<Vector3, float> intersectionAndDistance)
+	{
+		m_intersectionsAndDistances.push_back(intersectionAndDistance);
+	}
+
+	const std::vector<std::pair<Vector3, float>>& GetIntersectionsAndDistances() const
+	{
+		return m_intersectionsAndDistances;
 	}
 
 	void AddImpairedVisibilityRange(std::pair<float, float> impairedVisibilityRange)
@@ -42,23 +52,22 @@ public:
 };
 
 
-class cSightDistanceCalculator
+class SightDistanceCalculator
 {
 private:
 	std::shared_ptr<Polyline> m_polyline;
 	std::shared_ptr<std::vector<Triangle>> m_roadSurfaceTriangles;
-	cIntersectionCalculator m_intersectionCalculator;
-	std::shared_ptr<std::vector<cSightDistanceFailure>> m_sightDistanceFailures;
+	IntersectionCalculator m_intersectionCalculator;
+	std::shared_ptr<std::vector<SightDistanceFailure>> m_sightDistanceFailures;
 
-	static const unsigned int DISTANCE_STEP_METRES{ 5 };
-
-	const std::shared_ptr<std::vector<cSightDistanceFailure>> CalculateSightDistanceFailures() const;
 
 public:
-	cSightDistanceCalculator(std::shared_ptr<Polyline> polyline, std::shared_ptr<std::vector<Triangle>> roadSurfaceTriangles);
+	SightDistanceCalculator(std::shared_ptr<Polyline> polyline, std::shared_ptr<std::vector<Triangle>> roadSurfaceTriangles);
 
-	const std::shared_ptr<std::vector<cSightDistanceFailure>> GetSightDistanceFailures() const;
+	const std::shared_ptr<std::vector<SightDistanceFailure>> GetSightDistanceFailures() const;
 
+private:
+	const std::shared_ptr<std::vector<SightDistanceFailure>> CalculateSightDistanceFailures() const;
 
 };
 

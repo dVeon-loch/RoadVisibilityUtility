@@ -64,6 +64,8 @@
     <ClInclude Include="src\SightDistanceCalculator.h">
       <Filter>Source Files\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="src\portable-file-dialogs.h" />
+    <ClInclude Include="dependencies\tinyfiledialogs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RoadSurfaceReader.cpp">
@@ -101,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="src\SightDistanceCalculator.cpp">
       <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies\tinyfiledialogs.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

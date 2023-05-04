@@ -4,26 +4,26 @@
 
 #include <fstream>
 
-cSightDistanceCalculator::cSightDistanceCalculator(std::shared_ptr<Polyline> polyline, std::shared_ptr<std::vector<Triangle>> roadSurfaceTriangles) : m_polyline(polyline), m_roadSurfaceTriangles(roadSurfaceTriangles), m_intersectionCalculator(roadSurfaceTriangles)
+SightDistanceCalculator::SightDistanceCalculator(std::shared_ptr<Polyline> polyline, std::shared_ptr<std::vector<Triangle>> roadSurfaceTriangles) : m_polyline(polyline), m_roadSurfaceTriangles(roadSurfaceTriangles), m_intersectionCalculator(roadSurfaceTriangles)
 {
 }
 
-const std::shared_ptr<std::vector<cSightDistanceFailure>> cSightDistanceCalculator::GetSightDistanceFailures() const
+const std::shared_ptr<std::vector<SightDistanceFailure>> SightDistanceCalculator::GetSightDistanceFailures() const
 {
 	static auto sightDistanceFailures = CalculateSightDistanceFailures();
 
 	return sightDistanceFailures;
 }
 
-const std::shared_ptr<std::vector<cSightDistanceFailure>> cSightDistanceCalculator::CalculateSightDistanceFailures() const
+const std::shared_ptr<std::vector<SightDistanceFailure>> SightDistanceCalculator::CalculateSightDistanceFailures() const
 {
-	auto sightDistanceFailures = std::make_shared<std::vector<cSightDistanceFailure>>();
+	auto sightDistanceFailures = std::make_shared<std::vector<SightDistanceFailure>>();
 	std::ofstream file("RawOutput.txt");
 	file << std::fixed;
 	file.clear();
 	for (unsigned int i = 0; i < m_polyline->size(); i++) {
 		Vector3 currentViewPos = m_polyline -> at(i);
-		cSightDistanceFailure sightDistanceFailure(currentViewPos, m_polyline->GetDistanceAtIndex(i));
+		SightDistanceFailure sightDistanceFailure(currentViewPos, m_polyline->GetDistanceAtIndex(i));
 		float distance = 0;
 		unsigned int indexOffset = 1;
 		bool vertexFailed{ false };
@@ -44,6 +44,7 @@ const std::shared_ptr<std::vector<cSightDistanceFailure>> cSightDistanceCalculat
 				std::cout << std::fixed;
 				if(file.is_open())
 				{
+					sightDistanceFailure.AddIntersectionAndDistance(std::make_pair(intersection.intersectionCoord, distance));
 					file << "Current View Vertex: " << currentViewPos << " has intersection with triangle at coordinate: " << intersection.intersectionCoord << ", when attempting to view target at: " << distance << "m" << std::endl;
 				}
 				else

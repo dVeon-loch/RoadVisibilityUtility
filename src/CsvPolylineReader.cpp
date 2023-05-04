@@ -1,6 +1,6 @@
 #include "CsvPolylineReader.h"
 
-CsvPolylineReader::CsvPolylineReader(const char* filePath) : cPolylineReader(filePath)
+CsvPolylineReader::CsvPolylineReader(const std::string& filePath) : cPolylineReader(filePath)
 {
 }
 

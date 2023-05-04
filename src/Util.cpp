@@ -1,4 +1,7 @@
 #include "Util.h"
+
+#include "../dependencies/tinyfiledialogs.h"
+#include <fstream>
 #include <regex>
 #include <cmath>
 
@@ -23,4 +26,64 @@ Vector3 Util::cross(Vector3 vec1, Vector3 vec2)
 double Util::dot(Vector3 vec1, Vector3 vec2)
 {
 	return vec1.x() * vec2.x() + vec1.y() * vec2.y() + vec1.z() * vec2.z();
+}
+
+std::string Util::openChooseCsvFileDialog(const std::string& title)
+{
+	char const* lFilterPatterns[1] = { "*.csv" };
+	return std::string(tinyfd_openFileDialog(
+		title.c_str(),
+		"C:\\",
+		1,
+		lFilterPatterns,
+		NULL,
+		0
+	));
+}
+
+std::string Util::openSaveResultsFileDialog()
+{
+	char const* lFilterPatterns[1] = { "*.txt" };
+	return tinyfd_saveFileDialog(
+		"Save Results to File",
+		"C:\\",
+		1,
+		lFilterPatterns,
+		NULL
+	);
+}
+
+void Util::SaveResultsToFile(std::shared_ptr<std::vector<SightDistanceFailure>> sightDistanceFailures)
+{
+	std::ofstream file(Util::openSaveResultsFileDialog());
+	file << std::fixed;
+	file.clear();
+	if (file.is_open())
+	{
+
+		for (const auto& failure : *sightDistanceFailures)
+		{
+			Vector3 failureVertex = failure.GetVertex();
+			file << "At Vertex " << failure.GetDistanceFromStartMetres() << " metres from the start, visibility is impaired in the following distance ranges: " << std::endl;
+			for (const auto& range : failure.GetImpairedVisibilityRanges())
+			{
+				file << range.first << "m to " << range.second << "m" << std::endl;
+			}
+			file << "\n";
+		}
+		file << "\n\nRaw Results:" << std::endl;
+		file << "------------------------------\n" << std::endl;
+		for (const auto& failure : *sightDistanceFailures)
+		{
+			Vector3 failureVertex = failure.GetVertex();
+			file << "Vertex: " << failureVertex << ", " << failure.GetDistanceFromStartMetres() << "m from the start has visibility failures with the following parameters:" << std::endl;
+			for (const auto& intersectionAndDistance : failure.GetIntersectionsAndDistances())
+			{
+				file << "IP: " << intersectionAndDistance.first << ", Target distance along polyline: " << intersectionAndDistance.second << "m" << std::endl;
+			}
+			file << "\n";
+		}
+	}
+	file.flush();
+	file.close();
 }

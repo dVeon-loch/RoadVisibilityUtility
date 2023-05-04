@@ -6,6 +6,6 @@ class CsvPolylineReader :
     public cPolylineReader
 {
 public:
-    CsvPolylineReader(const char* filePath);
+    CsvPolylineReader(const std::string& filePath);
 };
 

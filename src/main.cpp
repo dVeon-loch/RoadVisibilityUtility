@@ -3,36 +3,23 @@
 #include "SightDistanceCalculator.h"
 #include "Util.h"
 
+
+
+
 int main()
 {
-	CsvPolylineReader polylineReader{ "C:\\personaldev\\CivilDesigner\\ProgrammingTask\\RoadVisibilityUtility\\data\\polyline.csv" };
+	CsvPolylineReader polylineReader{ Util::openChooseCsvFileDialog("Select Polyline File") };
 	std::shared_ptr<Polyline> polyline = polylineReader.ReadPolyline();
-	
 
-	CsvRoadSurfaceReader roadSurfaceReader{"C:\\personaldev\\CivilDesigner\\ProgrammingTask\\RoadVisibilityUtility\\data\\TIN Model Road Surface.csv"};
-	auto roadSurfaceTriangles = roadSurfaceReader.ReadRoadSurface();
 
-	cSightDistanceCalculator sightDistanceCalculator(polyline, roadSurfaceTriangles);
+	CsvRoadSurfaceReader roadSurfaceReader{ Util::openChooseCsvFileDialog("Select Road Surface File") };
+	std::shared_ptr<std::vector<Triangle>> roadSurfaceTriangles = roadSurfaceReader.ReadRoadSurface();
 
-	auto sightDistanceFailures = sightDistanceCalculator.GetSightDistanceFailures();
+	SightDistanceCalculator sightDistanceCalculator(polyline, roadSurfaceTriangles);
 
-	std::ofstream file("VisibilityRanges.txt");
-	file << std::fixed;
-	file.clear();
-	if (file.is_open())
-	{
+	std::shared_ptr<std::vector<SightDistanceFailure>> sightDistanceFailures = sightDistanceCalculator.GetSightDistanceFailures();
 
-		for (const auto& failure : *sightDistanceFailures)
-		{
-			Vector3 failureVertex = failure.GetVertex();
-			file << "At Vertex " << failure.GetDistanceFromStartMetres() << " metres from the start, visibility is impaired in the following distance ranges: " << std::endl;
-			for (const auto& range : failure.GetImpairedVisibilityRanges())
-			{
-				file << range.first << "m to " << range.second << "m" << std::endl;
-			}
-		}
-	}
-	file.flush();
-	file.close();
+	Util::SaveResultsToFile(sightDistanceFailures);
+
 	return 0;
 }
