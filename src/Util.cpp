@@ -33,7 +33,7 @@ std::string Util::openChooseCsvFileDialog(const std::string& title)
 	char const* lFilterPatterns[1] = { "*.csv" };
 	return std::string(tinyfd_openFileDialog(
 		title.c_str(),
-		"C:\\",
+		"./",
 		1,
 		lFilterPatterns,
 		NULL,
