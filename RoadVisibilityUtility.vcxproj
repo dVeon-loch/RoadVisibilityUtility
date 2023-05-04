@@ -136,6 +136,7 @@
     <None Include="docs\notes.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\portable-file-dialogs.h" />
     <ClInclude Include="src\SightDistanceCalculator.h" />
     <ClInclude Include="src\CsvRoadSurfaceReader.h" />
@@ -164,6 +165,12 @@
     <ClCompile Include="src\Triangle.cpp" />
     <ClCompile Include="src\Util.cpp" />
     <ClCompile Include="src\Vector3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RoadVisibilityUtility.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Users\bloch\Downloads\road_route_icon_iQH_icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -66,6 +66,7 @@
     </ClInclude>
     <ClInclude Include="src\portable-file-dialogs.h" />
     <ClInclude Include="dependencies\tinyfiledialogs.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RoadSurfaceReader.cpp">
@@ -107,5 +108,15 @@
     <ClCompile Include="dependencies\tinyfiledialogs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RoadVisibilityUtility.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Users\bloch\Downloads\road_route_icon_iQH_icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
