@@ -2,6 +2,10 @@
 
 #include "Vector3.h"
 
+/*
+* This class is a simple data class for holding 3 vertices that represent a triangle.
+* This could have been a struct, but encapsulation of the data was preferred.
+*/
 class Triangle
 {
 private:

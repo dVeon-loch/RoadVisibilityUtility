@@ -7,12 +7,15 @@
 
 #include "Triangle.h"
 
-class cRoadSurfaceReader
+/*
+* Abstract class for a generic road surface reader. Can be extended by concrete classes that work with specific file types.
+*/
+class RoadSurfaceReader
 {
 private:
 	const std::string m_filePath;
 public:
-	cRoadSurfaceReader(const std::string& filePath) : m_filePath(filePath)
+	RoadSurfaceReader(const std::string& filePath) : m_filePath(filePath)
 	{
 	}
 

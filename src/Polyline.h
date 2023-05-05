@@ -2,11 +2,15 @@
 
 #include <vector>
 #include "Vector3.h"
+
+/*
+* This class serves as a wrapper for a vector of vertices, with additional methods to make it easier to work with
+* and abstract away certain details. The distance along the polyline is also calculated here.
+*/
 class Polyline
 {
 private:
 	std::vector<Vector3> m_vertices;
-	unsigned int m_currentIndex{ 0 };
 	std::vector<float> m_distancesForIndices;
 
 public:
@@ -19,10 +23,6 @@ public:
 	Vector3 at(unsigned int index);
 
 	unsigned int size();
-
-	void IncrementCurrentVertex();
-
-	Vector3 GetCurrentVertex() const;
 
 	float GetDistanceAtIndex(unsigned int index) const;
 

@@ -11,14 +11,14 @@ struct Plane
 
 const float IntersectionCalculator::EPSILON{ 0.0001f };
 
-IntersectionCalculator::IntersectionCalculator(std::shared_ptr<std::vector<Triangle>> pRoadSurfaceTriangles) : m_pRoadSurfaceTriangles(pRoadSurfaceTriangles)
+IntersectionCalculator::IntersectionCalculator(std::shared_ptr<std::vector<Triangle>> pRoadSurfaceTriangles) : m_roadSurfaceTriangles(pRoadSurfaceTriangles)
 {
 }
 
 Intersection IntersectionCalculator::GetIntersectsWithRoad(const Vector3& rayStartVector, const Vector3& targetVector) const
 {
 	Intersection defaultIntersection;
-	for (const auto& triangle : *m_pRoadSurfaceTriangles)
+	for (const auto& triangle : *m_roadSurfaceTriangles)
 	{
 		Vector3 tri_A = triangle.GetA();
 		Vector3 tri_B = triangle.GetB();
@@ -69,9 +69,9 @@ Intersection IntersectionCalculator::GetIntersectsWithRoad(const Vector3& raySta
 		Vector3 B_Test_Vec = Util::cross(BC, B_to_Point);
 		Vector3 C_Test_Vec = Util::cross(CA, C_to_Point);
 
-		bool A_Test_Matches_Normal = Util::dot(A_test_Vec, trianglePlaneNormal);
-		bool B_Test_Matches_Normal = Util::dot(B_Test_Vec, trianglePlaneNormal);
-		bool C_Test_Matches_Normal = Util::dot(C_Test_Vec, trianglePlaneNormal);
+		bool A_Test_Matches_Normal = Util::dot(A_test_Vec, trianglePlaneNormal) > 0.f;
+		bool B_Test_Matches_Normal = Util::dot(B_Test_Vec, trianglePlaneNormal) > 0.f;
+		bool C_Test_Matches_Normal = Util::dot(C_Test_Vec, trianglePlaneNormal) > 0.f;
 
 		return { A_Test_Matches_Normal && B_Test_Matches_Normal && C_Test_Matches_Normal, planeIntersectionPoint };
 	}

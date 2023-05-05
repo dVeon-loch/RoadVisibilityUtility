@@ -31,9 +31,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Line.h">
-      <Filter>Source Files\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\Polyline.h">
       <Filter>Source Files\Objects</Filter>
     </ClInclude>
@@ -64,7 +61,6 @@
     <ClInclude Include="src\SightDistanceCalculator.h">
       <Filter>Source Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="src\portable-file-dialogs.h" />
     <ClInclude Include="dependencies\tinyfiledialogs.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
@@ -74,9 +70,6 @@
     </ClCompile>
     <ClCompile Include="src\PolylineReader.cpp">
       <Filter>Abstract Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Line.cpp">
-      <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="src\Polyline.cpp">
       <Filter>Source Files\Objects</Filter>

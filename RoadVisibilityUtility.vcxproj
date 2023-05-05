@@ -137,14 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="src\portable-file-dialogs.h" />
     <ClInclude Include="src\SightDistanceCalculator.h" />
     <ClInclude Include="src\CsvRoadSurfaceReader.h" />
     <ClInclude Include="src\CsvPolylineReader.h" />
     <ClInclude Include="src\RoadSurfaceReader.h" />
     <ClInclude Include="src\PolylineReader.h" />
     <ClInclude Include="src\IntersectionCalculator.h" />
-    <ClInclude Include="src\Line.h" />
     <ClInclude Include="src\Polyline.h" />
     <ClInclude Include="dependencies\tinyfiledialogs.h" />
     <ClInclude Include="src\Triangle.h" />
@@ -159,7 +157,6 @@
     <ClCompile Include="src\RoadSurfaceReader.cpp" />
     <ClCompile Include="src\PolylineReader.cpp" />
     <ClCompile Include="src\IntersectionCalculator.cpp" />
-    <ClCompile Include="src\Line.cpp" />
     <ClCompile Include="src\Polyline.cpp" />
     <ClCompile Include="dependencies\tinyfiledialogs.cpp" />
     <ClCompile Include="src\Triangle.cpp" />

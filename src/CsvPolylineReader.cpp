@@ -1,10 +1,10 @@
 #include "CsvPolylineReader.h"
 
-CsvPolylineReader::CsvPolylineReader(const std::string& filePath) : cPolylineReader(filePath)
+CsvPolylineReader::CsvPolylineReader(const std::string& filePath) : PolylineReader(filePath)
 {
 }
 
-std::shared_ptr<Polyline> cPolylineReader::ReadPolyline()
+std::shared_ptr<Polyline> PolylineReader::ReadPolyline()
 {
 	std::ifstream inputFile;
 	inputFile.open(m_filePath);

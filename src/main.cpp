@@ -8,11 +8,11 @@
 
 int main()
 {
-	CsvPolylineReader polylineReader{ Util::openChooseCsvFileDialog("Select Polyline File") };
+	CsvPolylineReader polylineReader{ Util::OpenChooseCsvFileDialog("Select Polyline File") };
 	std::shared_ptr<Polyline> polyline = polylineReader.ReadPolyline();
 
 
-	CsvRoadSurfaceReader roadSurfaceReader{ Util::openChooseCsvFileDialog("Select Road Surface File") };
+	CsvRoadSurfaceReader roadSurfaceReader{ Util::OpenChooseCsvFileDialog("Select Road Surface File") };
 	std::shared_ptr<std::vector<Triangle>> roadSurfaceTriangles = roadSurfaceReader.ReadRoadSurface();
 
 	SightDistanceCalculator sightDistanceCalculator(polyline, roadSurfaceTriangles);

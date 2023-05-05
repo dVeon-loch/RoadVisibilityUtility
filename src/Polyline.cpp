@@ -12,7 +12,7 @@ Polyline::Polyline(std::vector<Vector3> verticies): m_vertices(verticies)
     }
 }
 
-Polyline::Polyline(const Polyline& polyline): m_vertices(polyline.m_vertices), m_currentIndex(polyline.m_currentIndex)
+Polyline::Polyline(const Polyline& polyline): m_vertices(polyline.m_vertices)
 {
 }
 
@@ -29,16 +29,6 @@ Vector3 Polyline::at(unsigned int index)
 unsigned int Polyline::size()
 {
     return m_vertices.size();
-}
-
-void Polyline::IncrementCurrentVertex()
-{
-    m_currentIndex++;
-}
-
-Vector3 Polyline::GetCurrentVertex() const
-{
-    return m_vertices[m_currentIndex];
 }
 
 float Polyline::GetDistanceAtIndex(unsigned int index) const

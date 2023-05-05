@@ -8,11 +8,10 @@
 #include "Vector3.h"
 
 /*
-This namespace serves as a general grouping of utility methods that
-have been used in various places throughout the project.
-
-While some of these methods could have been grouped into more specific 
-namespaces or classes, it was decided to keep them together to not clutter the project too much.
+* This namespace serves as a general grouping of utility methods that
+* have been used in various places throughout the project.
+* While some of these methodscould have been grouped into more specific namespaces or classes,
+* it was decided to keep them together to not clutter the project too much.
 */
 namespace Util
 {
@@ -24,9 +23,9 @@ namespace Util
 
 	double dot(Vector3 vec1, Vector3 vec2);
 
-	std::string openChooseCsvFileDialog(const std::string& title);
+	std::string OpenChooseCsvFileDialog(const std::string& title);
 	
-	std::string openSaveResultsFileDialog();
+	std::string OpenSaveResultsFileDialog();
 	
 	void SaveResultsToFile(std::shared_ptr<std::vector<SightDistanceFailure>> sightDistanceFailures);
 }

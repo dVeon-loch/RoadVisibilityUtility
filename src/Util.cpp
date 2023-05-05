@@ -28,7 +28,7 @@ double Util::dot(Vector3 vec1, Vector3 vec2)
 	return vec1.x() * vec2.x() + vec1.y() * vec2.y() + vec1.z() * vec2.z();
 }
 
-std::string Util::openChooseCsvFileDialog(const std::string& title)
+std::string Util::OpenChooseCsvFileDialog(const std::string& title)
 {
 	char const* lFilterPatterns[1] = { "*.csv" };
 	return std::string(tinyfd_openFileDialog(
@@ -41,7 +41,7 @@ std::string Util::openChooseCsvFileDialog(const std::string& title)
 	));
 }
 
-std::string Util::openSaveResultsFileDialog()
+std::string Util::OpenSaveResultsFileDialog()
 {
 	char const* lFilterPatterns[1] = { "*.txt" };
 	return tinyfd_saveFileDialog(
@@ -55,7 +55,7 @@ std::string Util::openSaveResultsFileDialog()
 
 void Util::SaveResultsToFile(std::shared_ptr<std::vector<SightDistanceFailure>> sightDistanceFailures)
 {
-	std::ofstream file(Util::openSaveResultsFileDialog());
+	std::ofstream file(Util::OpenSaveResultsFileDialog());
 	file << std::fixed;
 	file.clear();
 	if (file.is_open())

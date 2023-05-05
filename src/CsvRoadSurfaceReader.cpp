@@ -2,11 +2,11 @@
 #include "Util.h"
 
 
-CsvRoadSurfaceReader::CsvRoadSurfaceReader(const std::string& filePath) : cRoadSurfaceReader(filePath)
+CsvRoadSurfaceReader::CsvRoadSurfaceReader(const std::string& filePath) : RoadSurfaceReader(filePath)
 {
 }
 
-const std::shared_ptr<std::vector<Triangle>> cRoadSurfaceReader::ReadRoadSurface()
+const std::shared_ptr<std::vector<Triangle>> RoadSurfaceReader::ReadRoadSurface()
 {
 	std::ifstream inputFile;
 	inputFile.open(m_filePath);

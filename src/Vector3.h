@@ -2,6 +2,10 @@
 
 #include <array>
 #include <iostream>
+
+/*
+* This class serves as a basic 3D vector.
+*/
 class Vector3
 {
 private:
@@ -9,8 +13,6 @@ private:
 	double m_y;
 	double m_z;
 public:
-	//Vertex(float x, float y, float z);
-
 	static const Vector3 ZERO;
 
 	Vector3(double x, double y, double z);

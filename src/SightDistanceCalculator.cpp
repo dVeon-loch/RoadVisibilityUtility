@@ -18,9 +18,6 @@ const std::shared_ptr<std::vector<SightDistanceFailure>> SightDistanceCalculator
 const std::shared_ptr<std::vector<SightDistanceFailure>> SightDistanceCalculator::CalculateSightDistanceFailures() const
 {
 	auto sightDistanceFailures = std::make_shared<std::vector<SightDistanceFailure>>();
-	std::ofstream file("RawOutput.txt");
-	file << std::fixed;
-	file.clear();
 	for (unsigned int i = 0; i < m_polyline->size(); i++) {
 		Vector3 currentViewPos = m_polyline -> at(i);
 		SightDistanceFailure sightDistanceFailure(currentViewPos, m_polyline->GetDistanceAtIndex(i));
@@ -42,16 +39,7 @@ const std::shared_ptr<std::vector<SightDistanceFailure>> SightDistanceCalculator
 				vertexFailed = true;
 				if (visibilityRange.first == -1.f) visibilityRange.first = distance;
 				std::cout << std::fixed;
-				if(file.is_open())
-				{
-					sightDistanceFailure.AddIntersectionAndDistance(std::make_pair(intersection.intersectionCoord, distance));
-					file << "Current View Vertex: " << currentViewPos << " has intersection with triangle at coordinate: " << intersection.intersectionCoord << ", when attempting to view target at: " << distance << "m" << std::endl;
-				}
-				else
-				{
-					std::cout << "Failed to open raw output file." << std::endl;
-				}
-
+				sightDistanceFailure.AddIntersectionAndDistance(std::make_pair(intersection.intersectionCoord, distance));
 			}
 			else if (visibilityRange.first != -1.f)
 			{
@@ -62,7 +50,7 @@ const std::shared_ptr<std::vector<SightDistanceFailure>> SightDistanceCalculator
 		}
 		if (vertexFailed)
 		{
-			if (visibilityRange.second == -1.f)
+			if (visibilityRange.first != -1.f && visibilityRange.second == -1.f)
 			{
 				visibilityRange.second = distance;
 				sightDistanceFailure.AddImpairedVisibilityRange(visibilityRange);
@@ -70,7 +58,5 @@ const std::shared_ptr<std::vector<SightDistanceFailure>> SightDistanceCalculator
 			sightDistanceFailures->push_back(sightDistanceFailure);
 		}
 	}
-	file.flush();
-	file.close();
 	return sightDistanceFailures;
 }
