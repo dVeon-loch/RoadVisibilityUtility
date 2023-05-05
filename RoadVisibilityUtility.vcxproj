@@ -166,7 +166,7 @@
     <ResourceCompile Include="RoadVisibilityUtility.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Users\bloch\Downloads\road_route_icon_iQH_icon.ico" />
+    <Image Include="road_route_icon_iQH_icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
