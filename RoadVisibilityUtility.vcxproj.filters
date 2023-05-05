@@ -20,7 +20,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\welbedacht_Plan1.dxf" />
     <None Include="docs\How far can you see along a road.pdf" />
     <None Include="docs\notes.md" />
     <None Include="data\polyline.csv">

@@ -131,7 +131,6 @@
   <ItemGroup>
     <None Include="data\polyline.csv" />
     <None Include="data\TIN Model Road Surface.csv" />
-    <None Include="data\welbedacht_Plan1.dxf" />
     <None Include="docs\How far can you see along a road.pdf" />
     <None Include="docs\notes.md" />
   </ItemGroup>
