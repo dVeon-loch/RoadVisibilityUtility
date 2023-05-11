@@ -1,5 +1,4 @@
 #include "RenderHandler.h"
-#include "Renderer.h"
 
 /*
 #include "imgui/imgui.h"
@@ -13,6 +12,14 @@
 */
 
 
+
+RenderHandler::RenderHandler(std::shared_ptr<std::vector<Triangle>> roadSurfaceTriangles, std::shared_ptr<Polyline> polyline, std::shared_ptr<std::vector<SightDistanceFailure>> sightDistanceFailures) : m_roadSurfaceTriangles(roadSurfaceTriangles), m_Polyline(polyline), m_SightDistanceFailures(sightDistanceFailures)
+{
+}
+
+RenderHandler::~RenderHandler()
+{
+}
 
 void RenderHandler::DrawRoadSurface(Color color)
 {
@@ -29,6 +36,21 @@ void RenderHandler::DrawResults(Color roadColor, Color polylineColor, Color view
 int RenderHandler::InitRenderLoop()
 {
 	return -1;
+}
+
+std::shared_ptr<VertexArray> RenderHandler::TrianglesToVertexArray()
+{
+	return std::shared_ptr<VertexArray>();
+}
+
+std::shared_ptr<VertexArray> RenderHandler::PolylineToVertexArray()
+{
+	return std::shared_ptr<VertexArray>();
+}
+
+std::shared_ptr<VertexArray> RenderHandler::ResultsToVertexArray()
+{
+	return std::shared_ptr<VertexArray>();
 }
 
 
