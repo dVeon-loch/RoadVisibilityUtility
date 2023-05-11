@@ -76,10 +76,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\OpenGLMain\src\vendor;$(SolutionDir)..\OpenGLMain\src\;%(SolutionDir)..\GraphicsDeps\GLEW\include\GL;%(SolutionDir)..\GraphicsDeps\GLFW\include\GLFW</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -90,12 +94,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\OpenGLMain\src\;%(SolutionDir)..\GraphicsDeps\GLEW\include\GL;%(SolutionDir)..\GraphicsDeps\GLFW\include\GLFW</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -135,6 +143,7 @@
     <None Include="docs\notes.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\RenderHandler.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\SightDistanceCalculator.h" />
     <ClInclude Include="src\CsvRoadSurfaceReader.h" />
@@ -144,11 +153,13 @@
     <ClInclude Include="src\IntersectionCalculator.h" />
     <ClInclude Include="src\Polyline.h" />
     <ClInclude Include="dependencies\tinyfiledialogs.h" />
+    <ClInclude Include="src\SightDistanceFailure.h" />
     <ClInclude Include="src\Triangle.h" />
     <ClInclude Include="src\Util.h" />
     <ClInclude Include="src\Vector3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\RenderHandler.cpp" />
     <ClCompile Include="src\SightDistanceCalculator.cpp" />
     <ClCompile Include="src\CsvRoadSurfaceReader.cpp" />
     <ClCompile Include="src\CsvPolylineReader.cpp" />
@@ -167,6 +178,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="road_route_icon_iQH_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenGLMain\TheChernoOpenGLCourse.vcxproj">
+      <Project>{a91ebbb8-7024-4a50-9877-a495dd5877ff}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

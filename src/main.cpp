@@ -2,7 +2,7 @@
 #include "CsvRoadSurfaceReader.h"
 #include "SightDistanceCalculator.h"
 #include "Util.h"
-
+#include "RenderHandler.h"
 
 
 
@@ -18,6 +18,10 @@ int main()
 	SightDistanceCalculator sightDistanceCalculator(polyline, roadSurfaceTriangles);
 
 	std::shared_ptr<std::vector<SightDistanceFailure>> sightDistanceFailures = sightDistanceCalculator.GetSightDistanceFailures();
+
+	RenderHandler renderHandler;
+
+	renderHandler.InitRenderLoop();
 
 	Util::SaveResultsToFile(sightDistanceFailures);
 
