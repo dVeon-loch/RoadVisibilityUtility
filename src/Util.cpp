@@ -53,6 +53,19 @@ std::string Util::OpenSaveResultsFileDialog()
 	);
 }
 
+std::string Util::OpenShaderFileDialog(const std::string& title)
+{
+	char const* lFilterPatterns[1] = { "*.shader" };
+	return std::string(tinyfd_openFileDialog(
+		title.c_str(),
+		"./",
+		1,
+		lFilterPatterns,
+		NULL,
+		0
+	));
+}
+
 void Util::SaveResultsToFile(std::shared_ptr<std::vector<SightDistanceFailure>> sightDistanceFailures)
 {
 	std::ofstream file(Util::OpenSaveResultsFileDialog());

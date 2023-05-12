@@ -26,6 +26,8 @@ namespace Util
 	std::string OpenChooseCsvFileDialog(const std::string& title);
 	
 	std::string OpenSaveResultsFileDialog();
+
+	std::string OpenShaderFileDialog(const std::string& title);
 	
 	void SaveResultsToFile(std::shared_ptr<std::vector<SightDistanceFailure>> sightDistanceFailures);
 }

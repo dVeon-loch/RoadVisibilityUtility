@@ -21,7 +21,10 @@ int main()
 
 	RenderHandler renderHandler(roadSurfaceTriangles, polyline, sightDistanceFailures);
 
-	renderHandler.InitRenderLoop();
+	renderHandler.DrawRoadSurface();
+	//renderHandler.DrawPolyline();
+	//renderHandler.DrawResults();
+	//renderHandler.InitRenderLoop();
 
 	Util::SaveResultsToFile(sightDistanceFailures);
 

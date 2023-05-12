@@ -21,15 +21,15 @@ Vector3::Vector3(std::array<double, 3> vertices) : Vector3(vertices[0], vertices
 {
 }
 
- double Vector3::x()
+ double Vector3::x() const
 {
 	return m_x;
 }
- double Vector3::y()
+ double Vector3::y() const
 {
 	return m_y;
 }
- double Vector3::z()
+ double Vector3::z() const
 {
 	return m_z;
 }

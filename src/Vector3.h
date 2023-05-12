@@ -29,11 +29,11 @@ public:
 	{
 	}
 
-	double x();
+	double x() const;
 
-	double y();
+	double y() const;
 
-	double z();
+	double z() const;
 
 	// std::array returns whole array so this does not get destroyed when scope ends.
 	const std::array<double, 3> GetArray();

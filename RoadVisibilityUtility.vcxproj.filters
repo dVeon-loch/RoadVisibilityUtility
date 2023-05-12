@@ -116,4 +116,9 @@
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="dependencies\glfw3.lib" />
+    <Library Include="dependencies\glew32s.lib" />
+    <Library Include="dependencies\TheChernoOpenGLCourse.lib" />
+  </ItemGroup>
 </Project>
