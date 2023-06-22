@@ -2,7 +2,8 @@
 
 This project is intended to be an example or test case of my modern C++ learning and development. The task for the project is simple: Solve for the areas of a road where visibility is impaired.
 The data for the road and the line of travel are given in csv files containing real-world coordinate data, and are converted into their corresponding entities within the program (a list of triangles for the road and a simple polyline for the view line).
-
+## Object Diagram
+![Object Diagram](docs/Object Diagram Full.png)
 ## Possible Improvements
 These are some improvements that I want to make to this project to either make it more computationally efficient, cleaner, or just generally better.
 - Add rendering for the output results. I want to see the road, view line and low visibility areas in a 3D render. 
