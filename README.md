@@ -1,6 +1,6 @@
 # RoadVisibilityUtility
 
-This project is intended to be an example or test case of my modern C++ learning and development. The task for the project is simple: Solve for the areas of a road where visibility is impaired.
+The task for the project is simple: Solve for the areas of a road where visibility is impaired.
 The data for the road and the line of travel are given in csv files containing real-world coordinate data, and are converted into their corresponding entities within the program (a list of triangles for the road and a simple polyline for the view line).
 ## Object Diagram
 ![Object Diagram](docs/Object%20Diagram%20Full.png)
